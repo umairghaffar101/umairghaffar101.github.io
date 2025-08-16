@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umair Ghaffar - Senior .NET Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-text: #6b7280;
+            --bg-color: #f8fafc;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            text-align: center;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--light-text);
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 50%;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 50%;
+            margin-right: 0;
+            padding-left: 40px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .job-period {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .job-description {
+            color: var(--light-text);
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            padding: 30px 30px 20px;
+            background: var(--gradient);
+            color: white;
+            position: relative;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-description {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .industry-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .industry-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+
+        .achievement-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .achievement-text {
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+                padding-left: 30px;
+                padding-right: 30px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Umair Ghaffar</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Senior .NET Developer</h1>
+                    <p class="subtitle">Desktop Applications • Enterprise Solutions • AI Integration</p>
+                    <p>Experienced .NET Application Developer with 4+ years of expertise in developing robust Windows applications across healthcare, cybersecurity, and marketing industries. Specialized in desktop development, automation scripting, AI tool integration, and enterprise solutions.</p>
+                    <div class="cta-buttons">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-card">
+                        <div class="profile-img">UG</div>
+                        <h3>Engr. Umair Ghaffar</h3>
+                        <p style="color: var(--primary-color); font-weight: 600; margin-bottom: 20px;">Senior .NET Desktop Application Developer</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i>📧</i>
+                                <span>ghaffar.umairrr@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i>📱</i>
+                                <span>+92 303 6736360</span>
+                            </div>
+                            <div class="contact-item">
+                                <i>📍</i>
+                                <span>Lahore, Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Professional Experience</h2>
+            <p class="section-subtitle animate-on-scroll">My journey in software development</p>
+            
+            <div class="experience-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Windows Product Developer</h3>
+                        <div class="company">Pligence</div>
+                        <div class="job-period">September 2024 - Present • Lahore, Pakistan</div>
+                        <ul class="job-description">
+                            <li>Developing comprehensive Windows MDM (Mobile Device Management) solution for enterprise cybersecurity</li>
+                            <li>Implementing PowerShell scripting and automation for Windows-based management workflows</li>
+                            <li>Designing desktop applications for device monitoring, policy enforcement, and security compliance</li>
+                            <li>Creating automated deployment and configuration systems for enterprise environments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Senior .NET Developer</h3>
+                        <div class="company">Code 5 - Iboothme | Noonah</div>
+                        <div class="job-period">September 2023 - August 2024 • Lahore, Pakistan</div>
+                        <ul class="job-description">
+                            <li>Developed audience-engaging desktop applications and IoT solutions using C# and .NET Framework</li>
+                            <li>Trained and integrated AI models for 3D avatar content generation and animated picture processing</li>
+                            <li>Implemented video processing solutions using FFmpeg and Stable Diffusion for marketing content</li>
+                            <li>Built desktop applications for AI-powered content creation and automated video generation workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">.NET Developer</h3>
+                        <div class="company">TECH ANDAZ SMC PVT LTD</div>
+                        <div class="job-period">July 2022 - September 2023 • Lahore, Pakistan</div>
+                        <ul class="job-description">
+                            <li>Developed MealMinion POS system for restaurant chain management using C# WinForms and MS SQL Server</li>
+                            <li>Created Kitchen Display System with real-time order processing and inventory management</li>
+                            <li>Implemented print servers and socket servers for multi-location restaurant operations</li>
+                            <li>Designed responsive desktop interfaces with advanced reporting and analytics features</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Manager HMIS & Software Developer</h3>
+                        <div class="company">Bakhtawar Amin Memorial & Trust Hospital & Colleges</div>
+                        <div class="job-period">December 2020 - July 2022 • Multan, Pakistan</div>
+                        <ul class="job-description">
+                            <li>Developed comprehensive HMIS modules for accounts, reception, and laboratory operations</li>
+                            <li>Integrated lab machines using HL7 and HLSM protocols for automated data exchange</li>
+                            <li>Created Dr. Digital Prescription system with automated prescription generation and management</li>
+                            <li>Implemented Qmatic display hardware and software solution for patient queue management</li>
+                            <li>Managed biometric attendance systems and developed database backup and recovery policies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item animate-on-scroll">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="job-title">Junior Software Developer</h3>
+                        <div class="company">Titans Coder</div>
+                        <div class="job-period">March 2020 - December 2020 • Multan, Pakistan</div>
+                        <ul class="job-description">
+                            <li>Developed desktop applications using C# .NET Framework and Windows Forms</li>
+                            <li>Created database-driven applications with MS SQL Server integration</li>
+                            <li>Implemented REST API integrations and JWT token authentication systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Technical Expertise</h2>
+            <p class="section-subtitle animate-on-scroll">Technologies and tools I work with</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">💻</div>
+                    <h3>Programming & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">VB.NET</span>
+                        <span class="skill-tag">.NET Framework</span>
+                        <span class="skill-tag">.NET Core</span>
+                        <span class="skill-tag">ASP.NET</span>
+                        <span class="skill-tag">WinForms</span>
+                        <span class="skill-tag">WPF</span>
+                        <span class="skill-tag">Entity Framework</span>
+                        <span class="skill-tag">ADO.NET</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">🗄️</div>
+                    <h3>Database Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MS SQL Server</span>
+                        <span class="skill-tag">MySQL 8.0</span>
+                        <span class="skill-tag">Crystal Reports</span>
+                        <span class="skill-tag">LINQ</span>
+                        <span class="skill-tag">Database Design</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">🤖</div>
+                    <h3>AI & Automation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Stable Diffusion</span>
+                        <span class="skill-tag">FFmpeg</span>
+                        <span class="skill-tag">AI Model Training</span>
+                        <span class="skill-tag">PowerShell Scripting</span>
+                        <span class="skill-tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Web Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">REST API</span>
+                        <span class="skill-tag">JWT Authentication</span>
+                        <span class="skill-tag">JSON</span>
+                        <span class="skill-tag">Razor Pages</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">🛠️</div>
+                    <h3>Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">ClickUp</span>
+                        <span class="skill-tag">Agile Development</span>
+                        <span class="skill-tag">Version Control</span>
+                        <span class="skill-tag">Code Review</span>
+                    </div>
+                </div>
+
+                <div class="skill-category animate-on-scroll">
+                    <div class="skill-icon">🔗</div>
+                    <h3>Specialized Protocols</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HL7</span>
+                        <span class="skill-tag">HLSM</span>
+                        <span class="skill-tag">IoT Integration</span>
+                        <span class="skill-tag">Socket Programming</span>
+                        <span class="skill-tag">Print Server Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Key Projects</h2>
+            <p class="section-subtitle animate-on-scroll">Showcasing my development expertise across various domains</p>
+            
+            <div class="projects-grid">
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">Windows MDM Solution</h3>
+                        <p class="project-subtitle">Enterprise Cybersecurity Platform</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Enterprise-grade Mobile Device Management system with PowerShell automation and policy enforcement capabilities for comprehensive cybersecurity management.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">PowerShell</span>
+                            <span class="tech-tag">WinForms</span>
+                            <span class="tech-tag">Enterprise Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">MealMinion POS System</h3>
+                        <p class="project-subtitle">Restaurant Management Solution</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Complete restaurant management solution with kitchen display system, inventory tracking, and multi-location support for efficient restaurant operations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">WinForms</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Socket Programming</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">Dr. Digital Prescription System</h3>
+                        <p class="project-subtitle">Healthcare Management Platform</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Automated prescription generation system with integrated patient management, reporting capabilities, and seamless healthcare workflow optimization.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">.NET Framework</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Crystal Reports</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">AI-Powered Content Generation</h3>
+                        <p class="project-subtitle">Marketing & Media Solutions</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Desktop applications for 3D avatar creation using Stable Diffusion and video processing technologies for automated marketing content generation.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Stable Diffusion</span>
+                            <span class="tech-tag">FFmpeg</span>
+                            <span class="tech-tag">AI Integration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">HMIS Laboratory Integration</h3>
+                        <p class="project-subtitle">Healthcare Information System</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">HL7/HLSM protocol implementation for automated lab equipment data exchange, reducing manual data entry and improving patient care efficiency.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HL7</span>
+                            <span class="tech-tag">HLSM</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Healthcare Protocols</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card animate-on-scroll">
+                    <div class="project-header">
+                        <h3 class="project-title">IoT Smart Solutions</h3>
+                        <p class="project-subtitle">Internet of Things Integration</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="project-description">Order booking smart table systems and QR-based attendance management solutions with seamless IoT device integration and real-time data processing.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">QR Integration</span>
+                            <span class="tech-tag">Real-time Processing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Industry Experience</h2>
+            <p class="section-subtitle animate-on-scroll">Diverse expertise across multiple sectors</p>
+            
+            <div class="industries-grid">
+                <div class="industry-card animate-on-scroll">
+                    <div class="industry-icon">🏥</div>
+                    <h3>Healthcare & Medical</h3>
+                    <p>HMIS development, prescription systems, lab equipment integration, patient management solutions</p>
+                </div>
+
+                <div class="industry-card animate-on-scroll">
+                    <div class="industry-icon">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>MDM solutions, data leak prevention, security compliance automation, enterprise security systems</p>
+                </div>
+
+                <div class="industry-card animate-on-scroll">
+                    <div class="industry-icon">🍽️</div>
+                    <h3>Food & Hospitality</h3>
+                    <p>POS systems, kitchen management, inventory tracking, multi-location restaurant operations</p>
+                </div>
+
+                <div class="industry-card animate-on-scroll">
+                    <div class="industry-icon">📱</div>
+                    <h3>Marketing & Media</h3>
+                    <p>AI content generation, video processing, audience engagement tools, 3D avatar creation</p>
+                </div>
+
+                <div class="industry-card animate-on-scroll">
+                    <div class="industry-icon">💻</div>
+                    <h3>Software & IT Services</h3>
+                    <p>Custom enterprise solutions, database management, system integration, automation services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Key Achievements</h2>
+            <p class="section-subtitle animate-on-scroll">Measurable impact through innovative solutions</p>
+            
+            <div class="achievements-grid">
+                <div class="achievement-card animate-on-scroll">
+                    <span class="achievement-number">60%</span>
+                    <p class="achievement-text">Reduction in manual data entry through comprehensive HMIS with HL7 integration, improving patient care efficiency</p>
+                </div>
+
+                <div class="achievement-card animate-on-scroll">
+                    <span class="achievement-number">40%</span>
+                    <p class="achievement-text">Decrease in production time through successful AI model integration for content generation while maintaining quality standards</p>
+                </div>
+
+                <div class="achievement-card animate-on-scroll">
+                    <span class="achievement-number">4+</span>
+                    <p class="achievement-text">Years of expertise in developing robust Windows applications across healthcare, cybersecurity, and marketing industries</p>
+                </div>
+
+                <div class="achievement-card animate-on-scroll">
+                    <span class="achievement-number">100%</span>
+                    <p class="achievement-text">Success rate in leading development of Windows MDM solution for enterprise cybersecurity with automated policy enforcement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" style="padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Education</h2>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="timeline-content animate-on-scroll" style="margin-bottom: 0;">
+                    <h3 class="job-title">Bachelor of Science in Computer Engineering</h3>
+                    <div class="company">University College of Engineering & Technology</div>
+                    <div class="company" style="font-size: 1rem; margin-bottom: 5px;">Bahauddin Zakariya University, Multan</div>
+                    <div class="job-period">October 2016 - November 2020 • CGPA: 3.69/4.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%); padding: 80px 0;">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Let's Work Together</h2>
+            <p class="section-subtitle animate-on-scroll">Ready to bring your next project to life</p>
+            
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <div class="profile-card animate-on-scroll" style="display: inline-block; margin-bottom: 40px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left;">
+                        <div class="contact-item" style="margin-bottom: 15px;">
+                            <i style="font-size: 18px;">📧</i>
+                            <span><strong>Email:</strong><br>ghaffar.umairrr@gmail.com</span>
+                        </div>
+                        <div class="contact-item" style="margin-bottom: 15px;">
+                            <i style="font-size: 18px;">📱</i>
+                            <span><strong>Phone:</strong><br>+92 303 6736360<br>+92 313 6305468</span>
+                        </div>
+                        <div class="contact-item" style="margin-bottom: 15px;">
+                            <i style="font-size: 18px;">📍</i>
+                            <span><strong>Location:</strong><br>Lahore, Pakistan</span>
+                        </div>
+                        <div class="contact-item">
+                            <i style="font-size: 18px;">💼</i>
+                            <span><strong>Availability:</strong><br>Open for new opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <a href="mailto:ghaffar.umairrr@gmail.com" class="btn btn-primary" style="margin-right: 20px;">Send Email</a>
+                    <a href="tel:+923036736360" class="btn btn-secondary">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Umair Ghaffar</h3>
+                <p style="color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto;">Senior .NET Desktop Application Developer specializing in enterprise solutions, healthcare systems, and AI integration.</p>
+                
+                <div class="social-links">
+                    <a href="mailto:ghaffar.umairrr@gmail.com" class="social-link">📧</a>
+                    <a href="tel:+923036736360" class="social-link">📱</a>
+                    <a href="#" class="social-link">💼</a>
+                    <a href="#" class="social-link">🔗</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Umair Ghaffar. All rights reserved. | Crafted with passion for excellence in software development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Animate on scroll functionality
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add typing effect to the main title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const title = document.querySelector('.hero-text h1');
+            const originalText = title.textContent;
+            typeWriter(title, originalText, 100);
+        });
+
+        // Add floating animation to skill cards
+        document.querySelectorAll('.skill-category').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Add hover effects to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) rotateX(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotateX(0deg)';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add counter animation for achievements
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + (element.textContent.includes('%') ? '%' : '+');
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + (element.textContent.includes('%') ? '%' : '+');
+                }
+            }
+            updateCounter();
+        }
+
+        // Trigger counter animations when achievements section is visible
+        const achievementObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.achievement-number');
+                    numbers.forEach(num => {
+                        const target = parseInt(num.textContent);
+                        if (!isNaN(target)) {
+                            animateCounter(num, target);
+                        }
+                    });
+                    achievementObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const achievementsSection = document.querySelector('.achievements');
+        if (achievementsSection) {
+            achievementObserver.observe(achievementsSection);
+        }
+    </script>
+</body>
+</html>
