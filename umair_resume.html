@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umair Ghaffar - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Crimson Text', serif;
+            line-height: 1.4;
+            color: #2c3e50;
+            background: white;
+            font-size: 11pt;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        .resume-container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            padding: 0.75in;
+            min-height: 11in;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #34495e;
+            position: relative;
+            page-break-after: avoid;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #2980b9;
+        }
+        
+        .name {
+            font-family: 'Inter', sans-serif;
+            font-size: 24pt;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 6px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .title {
+            font-size: 13pt;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+            font-weight: 400;
+            font-style: italic;
+        }
+        
+        .contact-info {
+            font-size: 10pt;
+            color: #34495e;
+            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .contact-info a { color: #34495e; text-decoration: none; }
+        
+        .section { margin-bottom: 20px; page-break-inside: avoid; }
+        .section:first-of-type { page-break-after: avoid; }
+        
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 14pt;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 18px;
+            background: linear-gradient(45deg, #2980b9, #1f618d);
+            border-radius: 2px;
+        }
+        
+        .summary-text {
+            text-align: justify;
+            line-height: 1.5;
+            color: #34495e;
+            font-size: 11pt;
+            padding: 12px 15px;
+            background: #f4f6f7;
+            border-left: 4px solid #2980b9;
+            border-radius: 0 4px 4px 0;
+            page-break-after: avoid;
+        }
+        
+        .job {
+            margin-bottom: 16px;
+            padding: 12px 15px;
+            border-left: 3px solid #ecf0f1;
+            border-radius: 0 4px 4px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            page-break-inside: avoid;
+        }
+        
+        .job.current {
+            border-left: 3px solid #2980b9;
+            background: linear-gradient(135deg, #eaf4fb 0%, #f4f9fd 100%);
+        }
+
+        .job-header { margin-bottom: 8px; }
+        
+        .job-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .job-title-company {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 12pt;
+            color: #2c3e50;
+        }
+        
+        .current-badge {
+            font-family: 'Inter', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            color: white;
+            background: #16a085;
+            padding: 2px 8px;
+            border-radius: 10px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        
+        .location-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            color: #7f8c8d;
+            font-weight: 400;
+            margin-bottom: 2px;
+        }
+        
+        .job-description ul { list-style: none; margin-left: 0; margin-top: 8px; }
+        
+        .job-description li {
+            margin-bottom: 6px;
+            line-height: 1.4;
+            font-size: 10.5pt;
+            color: #34495e;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .job-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #2980b9;
+            font-weight: bold;
+        }
+        
+        .education-item {
+            margin-bottom: 12px;
+            padding: 12px 15px;
+            background: #f4f6f7;
+            border-radius: 4px;
+            border-left: 4px solid #16a085;
+        }
+        
+        .degree-institution {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 12pt;
+            margin-bottom: 4px;
+        }
+        
+        .education-details {
+            font-size: 10pt;
+            color: #7f8c8d;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+        
+        .skills-section { display: grid; gap: 8px; }
+        
+        .skills-text {
+            color: #34495e;
+            font-size: 10.5pt;
+            line-height: 1.4;
+            padding: 10px 15px;
+            background: #f4f6f7;
+            border-radius: 4px;
+            border-left: 4px solid #8e44ad;
+        }
+        
+        .skills-text strong {
+            font-family: 'Inter', sans-serif;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 8px;
+        }
+        
+        .project-item {
+            padding: 12px;
+            border: 1px solid #ecf0f1;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #ffffff 0%, #f4f6f7 100%);
+            box-shadow: 0 2px 4px rgba(52, 73, 94, 0.08);
+            margin-bottom: 12px;
+        }
+        
+        .project-name {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 11pt;
+            margin-bottom: 6px;
+        }
+        
+        .project-description { color: #34495e; font-size: 10pt; line-height: 1.3; }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 8px;
+        }
+        
+        .achievement-item {
+            padding: 12px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(52, 73, 94, 0.3);
+        }
+        
+        .achievement-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 11pt;
+            margin-bottom: 6px;
+        }
+        
+        .achievement-description { font-size: 9.5pt; line-height: 1.3; opacity: 0.95; }
+        
+        .industry-experience {
+            background: linear-gradient(135deg, #ecf0f1 0%, #d5dbdb 100%);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 8px;
+        }
+        
+        .industry-item {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #d35400;
+        }
+        
+        .industry-item:last-child { margin-bottom: 0; }
+        
+        .industry-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 11pt;
+            margin-bottom: 3px;
+        }
+        
+        .industry-desc { color: #34495e; font-size: 10pt; line-height: 1.3; }
+
+        /* Print Optimizations */
+        @media print {
+            body { font-size: 10pt; color: #000; background: white; }
+            .resume-container { padding: 0.5in; max-width: none; width: 100%; box-shadow: none; margin: 0; }
+            .header { margin-bottom: 18px; padding-bottom: 15px; }
+            .name { font-size: 20pt; color: #000; }
+            .title { font-size: 12pt; color: #333; }
+            .contact-info { font-size: 9pt; color: #000; }
+            .section { margin-bottom: 16px; page-break-inside: avoid; }
+            .section-title { font-size: 12pt; color: #000; margin-bottom: 10px; }
+            .section-title::before { background: #000; }
+            .summary-text { font-size: 10pt; color: #000; background: #f5f5f5; border-left-color: #000; }
+            .job { background: #f9f9f9; border-left-color: #ccc; margin-bottom: 12px; padding: 10px 12px; }
+            .job.current { background: #f0f7ff; border-left-color: #2980b9; }
+            .current-badge { background: #555; }
+            .job-title-company { font-size: 11pt; color: #000; }
+            .location-date { font-size: 9pt; color: #333; }
+            .job-description li { font-size: 9.5pt; color: #000; }
+            .job-description li::before { color: #000; }
+            .education-item { background: #f5f5f5; border-left-color: #000; }
+            .degree-institution { font-size: 11pt; color: #000; }
+            .education-details { font-size: 9pt; color: #333; }
+            .skills-text { font-size: 9.5pt; color: #000; background: #f5f5f5; border-left-color: #000; }
+            .skills-text strong { color: #000; }
+            .projects-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .project-item { background: #f5f5f5; border-color: #ccc; box-shadow: none; padding: 10px; }
+            .project-name { font-size: 10pt; color: #000; }
+            .project-description { font-size: 9pt; color: #000; }
+            .achievements-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+            .achievement-item { background: #e0e0e0; color: #000; box-shadow: none; }
+            .achievement-title { font-size: 10pt; color: #000; }
+            .achievement-description { font-size: 9pt; color: #000; }
+            .industry-experience { background: #f0f0f0; }
+            .industry-item { background: white; border-left-color: #000; }
+            .industry-title { font-size: 10pt; color: #000; }
+            .industry-desc { font-size: 9pt; color: #000; }
+        }
+        
+        @page { size: A4; margin: 0.5in; }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="name">Engr. Umair Ghaffar</div>
+            <div class="title">Senior .NET Desktop Application Developer</div>
+            <div class="contact-info">
+                <a href="mailto:ghaffar.umairrr@gmail.com">ghaffar.umairrr@gmail.com</a>
+                &nbsp;|&nbsp; +92 313 6305468 &nbsp;|&nbsp; +92 303 6736360
+                &nbsp;|&nbsp; Islamabad, Pakistan
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="section">
+            <div class="section-title">Professional Summary</div>
+            <div class="summary-text">
+                Experienced .NET Application Developer with 5+ years of expertise building robust Windows desktop applications across oil &amp; gas, healthcare, cybersecurity, and marketing industries. Currently designing geophysical interpretation software at LMKR using WPF/MVVM and Telerik for WPF, with hands-on experience in seismic data visualization, well log interpretation, and SEG-Y data processing. Proven track record in POS systems, MDM solutions, healthcare management systems, and IoT applications. Strong background in database design, API integration, and PowerShell automation with experience in AI model training and video processing technologies.
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <div class="section-title">Professional Experience</div>
+
+            <!-- LMKR - Current -->
+            <div class="job current">
+                <div class="job-header">
+                    <div class="job-title-row">
+                        <div class="job-title-company">Application Designer</div>
+                        <span class="current-badge">CURRENT</span>
+                    </div>
+                    <div class="job-title-company">LMKR (Landmark Graphics Resources)</div>
+                    <div class="location-date">Islamabad, Pakistan</div>
+                    <div class="location-date">February 2025 – Present</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Designing and developing geophysical interpretation software for the oil &amp; gas industry using WPF and MVVM architecture</li>
+                        <li>Building advanced visualization tools for SEG-Y seismic data, 2D seismic sections, and 3D geovolume rendering</li>
+                        <li>Developing well log interpretation modules supporting LAS files, formation data, curve files, and stratigraphic interval analysis</li>
+                        <li>Implementing high-performance rendering pipelines for large seismic and well log datasets using GPU-aware techniques</li>
+                        <li>Integrating Telerik for WPF components for geological curve displays, log track views, and interactive 2D/3D panels</li>
+                        <li>Collaborating with geoscientists to design workflows for horizon picking, seismic-well correlation, and depth-to-time conversion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pligence -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">Windows Product Developer</div>
+                    <div class="job-title-company">Pligence</div>
+                    <div class="location-date">Lahore, Pakistan</div>
+                    <div class="location-date">September 2024 – January 2025</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Developed comprehensive Windows MDM (Mobile Device Management) solution for enterprise cybersecurity</li>
+                        <li>Implemented PowerShell scripting and automation for Windows-based management workflows</li>
+                        <li>Designed desktop applications for device monitoring, policy enforcement, and security compliance</li>
+                        <li>Created automated deployment and configuration systems for enterprise environments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Code 5 -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">Senior .NET Developer</div>
+                    <div class="job-title-company">Code 5 - Iboothme | Noonah</div>
+                    <div class="location-date">Lahore, Pakistan</div>
+                    <div class="location-date">September 2023 – August 2024</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Developed audience-engaging desktop applications and IoT solutions using C# and .NET Framework</li>
+                        <li>Trained and integrated AI models for 3D avatar content generation and animated picture processing</li>
+                        <li>Implemented video processing solutions using FFmpeg and Stable Diffusion for marketing content</li>
+                        <li>Built desktop applications for AI-powered content creation and automated video generation workflows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Andaz -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">.NET Developer</div>
+                    <div class="job-title-company">TECH ANDAZ SMC PVT LTD</div>
+                    <div class="location-date">Lahore, Pakistan</div>
+                    <div class="location-date">July 2022 – September 2023</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Developed MealMinion POS system for restaurant chain management using C# WinForms and MS SQL Server</li>
+                        <li>Created Kitchen Display System with real-time order processing and inventory management</li>
+                        <li>Implemented print servers and socket servers for multi-location restaurant operations</li>
+                        <li>Designed responsive desktop interfaces with advanced reporting and analytics features</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hospital -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">Manager HMIS &amp; Software Developer</div>
+                    <div class="job-title-company">Bakhtawar Amin Memorial &amp; Trust Hospital &amp; Colleges</div>
+                    <div class="location-date">Multan, Pakistan</div>
+                    <div class="location-date">December 2020 – July 2022</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Developed comprehensive HMIS modules for accounts, reception, and laboratory operations</li>
+                        <li>Integrated lab machines using HL7 and HLSM protocols for automated data exchange</li>
+                        <li>Created Dr. Digital Prescription system with automated prescription generation and management</li>
+                        <li>Implemented Qmatic display hardware and software solution for patient queue management</li>
+                        <li>Managed biometric attendance systems and developed database backup and recovery policies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Titans Coder -->
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-title-company">Junior Software Developer</div>
+                    <div class="job-title-company">Titans Coder</div>
+                    <div class="location-date">Multan, Pakistan</div>
+                    <div class="location-date">March 2020 – December 2020</div>
+                </div>
+                <div class="job-description">
+                    <ul>
+                        <li>Developed desktop applications using C# .NET Framework and Windows Forms</li>
+                        <li>Created database-driven applications with MS SQL Server integration</li>
+                        <li>Implemented REST API integrations and JWT token authentication systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="education-item">
+                <div class="degree-institution">Bachelor of Science in Computer Engineering</div>
+                <div class="education-details">University College of Engineering &amp; Technology, Bahauddin Zakariya University, Multan</div>
+                <div class="education-details">October 2016 – November 2020 &nbsp;•&nbsp; CGPA: 3.69 / 4.00</div>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <div class="section-title">Technical Expertise</div>
+            <div class="skills-section">
+                <div class="skills-text">
+                    <strong>Programming Languages &amp; Frameworks:</strong> C#, VB.NET, .NET Framework, .NET Core, ASP.NET, WinForms, WPF, MVVM, Entity Framework, ADO.NET
+                </div>
+                <div class="skills-text">
+                    <strong>Geophysical &amp; Oil &amp; Gas:</strong> SEG-Y Seismic Data, LAS Well Logs, Horizon Picking, Seismic Visualization, Well Log Interpretation, Telerik for WPF, 2D/3D Geovolume Rendering, Depth-to-Time Conversion
+                </div>
+                <div class="skills-text">
+                    <strong>Database Technologies:</strong> MS SQL Server (2008/2012/2019), MySQL 8.0, Crystal Reports, LINQ, Database Design
+                </div>
+                <div class="skills-text">
+                    <strong>AI &amp; Automation Tools:</strong> Stable Diffusion, FFmpeg, AI Model Training, PowerShell Scripting, Automation
+                </div>
+                <div class="skills-text">
+                    <strong>Web Technologies:</strong> HTML5, CSS3, JavaScript, REST API, JWT Authentication, JSON, Razor Pages
+                </div>
+                <div class="skills-text">
+                    <strong>Development Tools &amp; Methodologies:</strong> Git, JIRA, ClickUp, Agile Development, Version Control, Code Review
+                </div>
+                <div class="skills-text">
+                    <strong>Specialized Protocols:</strong> HL7, HLSM, IoT Integration, Socket Programming, Print Server Management
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Projects -->
+        <div class="section">
+            <div class="section-title">Key Projects</div>
+            <div class="projects-grid">
+                <div>
+                    <div class="project-item">
+                        <div class="project-name">Geophysical Interpretation Platform</div>
+                        <div class="project-description">WPF/MVVM desktop application for seismic data visualization, well log interpretation, and stratigraphic analysis with 2D/3D rendering — LMKR</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Windows MDM Solution</div>
+                        <div class="project-description">Enterprise-grade Mobile Device Management system with PowerShell automation and policy enforcement</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">MealMinion POS System</div>
+                        <div class="project-description">Complete restaurant management solution with kitchen display and inventory tracking</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">Dr. Digital Prescription System</div>
+                        <div class="project-description">Automated prescription generation with integrated patient management and reporting</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="project-item">
+                        <div class="project-name">AI-Powered Content Generation</div>
+                        <div class="project-description">Desktop applications for 3D avatar creation using Stable Diffusion and video processing</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">HMIS Laboratory Integration</div>
+                        <div class="project-description">HL7/HLSM protocol implementation for automated lab equipment data exchange</div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-name">IoT Smart Solutions</div>
+                        <div class="project-description">Order booking smart table and QR-based attendance management systems</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Achievements -->
+        <div class="section">
+            <div class="section-title">Key Achievements</div>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-title">Geophysical Software Design</div>
+                    <div class="achievement-description">Delivering enterprise-grade seismic interpretation tools at LMKR with high-performance WPF/MVVM architecture for oil &amp; gas workflows.</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">Healthcare Innovation</div>
+                    <div class="achievement-description">Developed comprehensive HMIS with HL7 integration, reducing manual data entry by 60% and improving patient care efficiency.</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">AI Integration Excellence</div>
+                    <div class="achievement-description">Successfully integrated AI models for content generation, reducing production time by 40% while maintaining quality standards.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Industry Experience -->
+        <div class="section">
+            <div class="section-title">Industry Experience</div>
+            <div class="industry-experience">
+                <div class="industry-item">
+                    <div class="industry-title">Oil &amp; Gas / Geophysics</div>
+                    <div class="industry-desc">Seismic interpretation software, SEG-Y data visualization, well log analysis, 2D/3D geovolume rendering, stratigraphic interpretation tools</div>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-title">Healthcare &amp; Medical Colleges</div>
+                    <div class="industry-desc">HMIS development, prescription systems, lab equipment integration, patient management</div>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-title">Cybersecurity</div>
+                    <div class="industry-desc">MDM solutions, data leak prevention, security compliance automation, enterprise security</div>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-title">Food &amp; Hospitality</div>
+                    <div class="industry-desc">POS systems, kitchen management, inventory tracking, multi-location restaurant operations</div>
+                </div>
+                <div class="industry-item">
+                    <div class="industry-title">Marketing &amp; Media</div>
+                    <div class="industry-desc">AI content generation, video processing, audience engagement tools, 3D avatar creation</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
